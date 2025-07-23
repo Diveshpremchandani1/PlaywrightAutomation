@@ -16,7 +16,7 @@ test('test', async ({ page, context }) => {
   await page.getByRole('textbox', { name: 'Captcha' }).click();
   await page.getByRole('textbox', { name: 'Captcha' }).fill('12345');
   await page.locator('#submitBtn').click();
-  timeout(2000);
+  await page.waitForTimeout(2000); // wait for 2 second
 
   await page.locator('.hamburger.hamburger--arrow').click();
   await page.getByRole('link', { name: 'Initiate New Case' }).click();
