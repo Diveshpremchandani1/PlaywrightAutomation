@@ -9,7 +9,7 @@ test('Initiate New Case Flow with Valid Credentials', async ({ page, context }) 
   // Step 2: Enter username and click Continue
   await page.locator('#username').fill('clientjourney.demo@authbridge.com');
   await page.getByRole('button', { name: 'Continue' }).click();
-  await expect(page.locator('#password')).toBeVisible(); // ✅ Password field should be visible
+  await expect(page.locator('#password')).toBeVisible(); // Password field should be visible
 
   // Step 3: Enter password with CapsLock simulation
   await page.locator('#password').press('CapsLock');
