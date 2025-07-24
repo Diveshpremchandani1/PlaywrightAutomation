@@ -17,6 +17,7 @@ test('test', async ({ page, context }) => {
   await page.getByRole('textbox', { name: 'Captcha' }).fill('12345');
   await page.locator('#submitBtn').click();
   await page.waitForTimeout(2000); // wait for 2 second
+  
 
   await page.locator('.hamburger.hamburger--arrow').click();
   await page.getByRole('link', { name: 'Initiate New Case' }).click();
@@ -42,12 +43,12 @@ test('test', async ({ page, context }) => {
   await page.locator("#partner-pin-code").fill('201301');
   await page.locator("label[title='City']").click();
  
- // Stored original tab (page)
+ // Stored original tab (page) or const originalPage = page;	Save the original tab for later use
 const originalPage = page;
 
-// Click the button/link that opens a new tab
+// Click the button/link that opens a new tab and Wait for new tab and open it via click
 const [newPage] = await Promise.all([
-  context.waitForEvent('page'), // Waited for new tab
+  context.waitForEvent('page'), // Waited for new tab or Wait for new tab to fully load
   page.locator("a[href='/home/privacy-policy']").click()
 ]);
 
